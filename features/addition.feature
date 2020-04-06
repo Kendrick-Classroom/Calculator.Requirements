@@ -47,7 +47,7 @@ Scenario Outline: Invalid inputs output messages
   Then I expect to see an <error> as output
   
 Examples:
-| input | output |
+| input | error |
 | ""    | "An input must be supplied." |
 | "  "    | "An input must be supplied." |
 | "1"   | "A number without operands isn't a valid expressions." |
