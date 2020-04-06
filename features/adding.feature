@@ -39,3 +39,20 @@ Examples:
 | "0 + 1 + 2" | 3       | # support optional whitepsace
 | "10+11+111" | 132     |
 | "-1 +2+ -3" | -2      | # support negative unary 
+
+@console @fault
+Scenario Outline: Invalid inputs output messages
+  Given an active console window
+  When I <input> invalid values
+  Then I expect to see an <error> as output
+  
+Examples:
+| input | output |
+| ""    | "An input must be supplied." |
+| "  "    | "An input must be supplied." |
+| "1"   | "A number without operands isn't a valid expressions." |
+| "+1"  | "A binary operator requires two inputs." |
+| "-1"  | "A binary operator requires two inputs." |
+| "1c"  | "Only numbers are currently supported." |
+| "1.000" | "Fractional numbers aren't supported at this time." |
+| "1*1" | "Invalid character '*' was detected." | # Show which character wasn't supported.
